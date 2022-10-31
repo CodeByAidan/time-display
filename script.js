@@ -90,7 +90,7 @@ body {
 }
 .clock {
   z-index: 1000;
-  opacity: 50%;
+  opacity: 72.5%;
   position: fixed;
   font-size: 20px;
   font-weight: bold;
@@ -102,11 +102,11 @@ body {
   border-radius: 5px;
   margin: 15px;
   box-shadow: 0 0 10px #000;
-  top: 20px;
+  top: 60px;
 }
 .date {
     z-index: 1001;
-    opacity: 50%;
+    opacity: 72.5%;
     position: fixed;
     display: block;
     font-size: 20px;
@@ -119,7 +119,7 @@ body {
     border-radius: 5px;
     margin: 15px;
     box-shadow: 0 0 10px #000;
-    top: 60px;
+    top: 20px;
 }
 `;
 document.getElementsByTagName("head")[0].appendChild(style);
