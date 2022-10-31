@@ -8,13 +8,13 @@ function showTime() {
   var m = date.getMinutes(); // 0 - 59
   var s = date.getSeconds(); // 0 - 59
   var session = "AM";
-
+  console.log(h);
   if (h == 0) {
     h = 12;
-  }
-
-  if (h > 12) {
-    h = h - 12;
+    session = "AM";
+  } else if ((h = 12)) {
+    session = "PM";
+  } else {
     session = "PM";
   }
 
@@ -72,13 +72,13 @@ div.className = "clock";
 document.body.appendChild(div);
 document.body.appendChild(div2);
 
-// Remove all elements but div and div2
-var elements = document.body.children;
-for (var i = 0; i < elements.length; i++) {
-  if (elements[i].id !== "MyClockDisplay" && elements[i].id !== "MyDateDisplay") {
-    elements[i].parentNode.removeChild(elements[i]);
-  }
-}
+// // Remove all elements but div and div2
+// var elements = document.body.children;
+// for (var i = 0; i < elements.length; i++) {
+//   if (elements[i].id !== "MyClockDisplay" && elements[i].id !== "MyDateDisplay") {
+//     elements[i].parentNode.removeChild(elements[i]);
+//   }
+// }
 
 showTime();
 // Add CSS to style clock
@@ -86,21 +86,28 @@ var style = document.createElement("style");
 style.type = "text/css";
 style.innerHTML = `
 body {
-    background: black;
+
 }
 .clock {
-    font-size: 20px;
-    font-weight: bold;
-    font-family: Orbitron;
-    text-align: center;
-    background: #000;
-    color: #17D4FE;
-    padding: 10px;
-    border-radius: 5px;
-    margin: 15px;
-    box-shadow: 0 0 10px #000;
+  z-index: 1000;
+  opacity: 50%;
+  position: fixed;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: Orbitron;
+  text-align: center;
+  background: #000;
+  color: #17D4FE;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 15px;
+  box-shadow: 0 0 10px #000;
+  top: 20px;
 }
 .date {
+    z-index: 1001;
+    opacity: 50%;
+    position: fixed;
     display: block;
     font-size: 20px;
     font-weight: bold;
@@ -112,14 +119,14 @@ body {
     border-radius: 5px;
     margin: 15px;
     box-shadow: 0 0 10px #000;
+    top: 60px;
 }
 `;
 document.getElementsByTagName("head")[0].appendChild(style);
-
-// remove the extra div and div2
-var elements = document.body.children;
-for (var i = 0; i < elements.length; i++) {
-  if (elements[i].id != "MyClockDisplay" && elements[i].id != "MyDateDisplay") {
-    elements[i].parentNode.removeChild(elements[i]);
-  }
-}
+// // remove the extra div and div2
+// var elements = document.body.children;
+// for (var i = 0; i < elements.length; i++) {
+//   if (elements[i].id != "MyClockDisplay" && elements[i].id != "MyDateDisplay") {
+//     elements[i].parentNode.removeChild(elements[i]);
+//   }
+// }
