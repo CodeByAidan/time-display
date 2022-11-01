@@ -8,50 +8,66 @@
   </head>
   <body>
     <script>
-        var date = new Date();
-        var hours = date.getHours() > 12 ? date.getHours() - 12 : date.getHours(); // 0 - 23
-        var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes(); // 0 - 59
-        var seconds = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds(); // 0 - 59
-        var am_pm = date.getHours() >= 12 ? "PM" : "AM";
-        hours = hours < 10 ? hours : hours;
-        time = hours + ":" + minutes + ":" + seconds + " " + am_pm;
-      
-        document.getElementById("MyClockDisplay").innerText = time;
-        document.getElementById("MyClockDisplay").textContent = time;
-      
-        setTimeout(showTime, 1000);
-        // Add Date
-        var d = new Date();
-        var days = [
-          "Sunday",
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-        ];
-        var months = [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
-          "August",
-          "September",
-          "October",
-          "November",
-          "December",
-        ];
-        var day = days[d.getDay()];
-        var month = months[d.getMonth()];
-        var date = d.getDate();
-        var year = d.getFullYear();
-        var fullDate = day + ", " + month + " " + date + ", " + year;
-        document.getElementById("MyDateDisplay").textContent = fullDate;
-        document.getElementById("MyDateDisplay").innerText = fullDate;      
-    </script>
+        function ClockDisplaySite() {
+            var date = new Date();
+            var hours = date.getHours() > 12 ? date.getHours() - 12 : date.getHours(); // 0 - 23
+            var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes(); // 0 - 59
+            var seconds = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds(); // 0 - 59
+            var am_pm = date.getHours() >= 12 ? "PM" : "AM";
+            hours = hours < 10 ? hours : hours;
+            time = hours + ":" + minutes + ":" + seconds + " " + am_pm;
+        
+            document.getElementById("MyClockDisplay").innerText = time;
+            document.getElementById("MyClockDisplay").textContent = time;
+        
+            setTimeout(showTime, 1000);
+            // Add Date
+            var d = new Date();
+            var days = [
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            ];
+            var months = [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
+            ];
+            var day = days[d.getDay()];
+            var month = months[d.getMonth()];
+            var date = d.getDate();
+            var year = d.getFullYear();
+            var fullDate = day + ", " + month + " " + date + ", " + year;
+            document.getElementById("MyDateDisplay").textContent = fullDate;
+            document.getElementById("MyDateDisplay").innerText = fullDate;      
+        }
+        
+        var div2 = document.createElement("div2");
+        div2.id = "MyDateDisplay";
+        div2.className = "date";
+
+        var div = document.createElement("div");
+        div.id = "MyClockDisplay";
+        div.className = "clock";
+        // Append div to body
+        document.body.appendChild(div);
+        document.body.appendChild(div2);
+
+        ClockDisplaySite();
+
+        </script>
   </body>
 </html>
