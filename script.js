@@ -4,25 +4,13 @@
 
 function showTime() {
   var date = new Date();
-  var h = date.getHours(); // 0 - 23
-  var m = date.getMinutes(); // 0 - 59
-  var s = date.getSeconds(); // 0 - 59
-  var session = "AM";
-  console.log(h);
-  if (h == 0) {
-    h = 12;
-    session = "AM";
-  } else if ((h = 12)) {
-    session = "PM";
-  } else {
-    session = "PM";
-  }
+  var hours = date.getHours() > 12 ? date.getHours() - 12 : date.getHours(); // 0 - 23
+  var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes(); // 0 - 59
+  var seconds = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds(); // 0 - 59
+  var am_pm = date.getHours() >= 12 ? "PM" : "AM";
+  hours = hours < 10 ? hours : hours;
+  time = hours + ":" + minutes + ":" + seconds + " " + am_pm;
 
-  h = h < 10 ? "0" + h : h;
-  m = m < 10 ? "0" + m : m;
-  s = s < 10 ? "0" + s : s;
-
-  var time = h + ":" + m + ":" + s + " " + session;
   document.getElementById("MyClockDisplay").innerText = time;
   document.getElementById("MyClockDisplay").textContent = time;
 
@@ -90,36 +78,35 @@ body {
 }
 .clock {
   z-index: 1000;
-  opacity: 72.5%;
+  background-color: rgba(0, 0, 0, 0.725);
   position: fixed;
   font-size: 20px;
   font-weight: bold;
   font-family: Orbitron;
   text-align: center;
-  background: #000;
-  color: #17D4FE;
+  color: rgba(23, 212, 254, 1.0);
   padding: 10px;
   border-radius: 5px;
   margin: 15px;
-  box-shadow: 0 0 10px #000;
-  top: 60px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.725);
+  top: 100px;
 }
+
 .date {
-    z-index: 1001;
-    opacity: 72.5%;
-    position: fixed;
-    display: block;
-    font-size: 20px;
-    font-weight: bold;
-    font-family: Orbitron;
-    text-align: center;
-    background: #000;
-    color: #17D4FE;
-    padding: 10px;
-    border-radius: 5px;
-    margin: 15px;
-    box-shadow: 0 0 10px #000;
-    top: 20px;
+  z-index: 1001;
+  background-color: rgba(0, 0, 0, 0.725);
+  position: fixed;
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: Orbitron;
+  text-align: center;
+  color: rgba(23, 212, 254, 1.0);
+  padding: 10px;
+  border-radius: 5px;
+  margin: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.725);
+  top: 42.5px;
 }
 `;
 document.getElementsByTagName("head")[0].appendChild(style);
